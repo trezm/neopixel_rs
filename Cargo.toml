@@ -2,8 +2,19 @@
 name = "neopixel_rs"
 version = "0.1.0"
 authors = ["Pete Mertz <me@pete.pm>"]
-build = "build.rs"
+
+[dependencies.photon-hal]
+path = "../photon-hal"
 
 [build-dependencies]
 gcc = "0.3"
 bindgen = "0.23"
+
+[profile.dev]
+debug = false
+debug-assertions = false
+lto = true
+opt-level = 3
+
+[profile.release]
+lto = true

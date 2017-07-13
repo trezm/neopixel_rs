@@ -1,19 +1,25 @@
+// fn main() {
+
+// }
+
 extern crate gcc;
 extern crate bindgen;
 
 use std::path::PathBuf;
 
 fn main() {
-    let bindings = bindgen::Builder::default()
-        .no_unstable_rust()
-        .header("src-cpp/neopixel-light.hpp")
-        .generate()
-        .expect("Unable to generate bindings");
+    // let bindings = bindgen::Builder::default()
+    //     .no_unstable_rust()
+    //     .header("src-cpp/pinset.hpp")
+    //     .layout_tests(false)
+    //     .use_core()
+    //     .generate()
+    //     .expect("Unable to generate bindings");
 
-    let out_path = PathBuf::from("src");
-    bindings
-        .write_to_file(out_path.join("lib.rs"))
-        .expect("Couldn't write bindings!");
+    // let out_path = PathBuf::from("src");
+    // bindings
+    //     .write_to_file(out_path.join("lib.pinset.rs"))
+    //     .expect("Couldn't write bindings!");
 
     let firmware_dir = "/Users/pete/dev/particle/firmware";
     gcc::Config::new()
@@ -96,6 +102,6 @@ fn main() {
         .flag("-fcheck-new")
         .flag("-std=gnu++11")
 
-        .file("src-cpp/neopixel.cpp")
-        .compile("libneopixel.a");
+        .file("src-cpp/pinset.cpp")
+        .compile("libpinset.a");
 }
